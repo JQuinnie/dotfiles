@@ -17,11 +17,12 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/). E
 
 ## Active Packages
 - `kitty/` - Kitty terminal config (stows to `~/.config/kitty/`)
+- `nvim/` - Neovim/LazyVim config (stows to `~/.config/nvim/`)
 - `starship/` - Starship prompt config (stows to `~/.config/starship.toml`)
 - `zsh/` - Zsh shell config (stows to `~/.zshrc`)
 
 ## Conventions
-- **Theme**: Gruvbox Dark across all tools (kitty, starship, nvim, bat)
+- **Theme**: Gruvbox Dark across all tools (kitty, starship, nvim)
 - **Font**: JetBrainsMono Nerd Font
 - **ls replacement**: eza (not lsd)
 - **Shell**: Zsh with Oh My Zsh + Starship prompt

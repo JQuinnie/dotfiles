@@ -17,7 +17,7 @@ cd ~/dotfiles
 stow kitty
 stow starship
 stow zsh
-# stow nvim   # coming soon
+stow nvim
 # stow bat    # coming soon
 
 echo "Dotfiles installed!"

@@ -5,10 +5,9 @@ Personal configuration files for my development environment.
 ## What's Included
 
 - **Kitty** - Terminal emulator config with Gruvbox Dark theme
-- **Zsh** - Shell configuration with Oh My Zsh
+- **Neovim** - LazyVim editor configuration with Gruvbox Material
 - **Starship** - Cross-shell prompt with Gruvbox palette
-- **Neovim/LazyVim** - Editor configuration (coming soon)
-- **Bat** - Cat replacement with syntax highlighting (coming soon)
+- **Zsh** - Shell configuration with Oh My Zsh
 
 ## Installation
 
@@ -26,6 +25,7 @@ To stow individual packages manually:
 ```bash
 cd ~/dotfiles
 stow kitty      # symlinks ~/.config/kitty
+stow nvim       # symlinks ~/.config/nvim
 stow starship   # symlinks ~/.config/starship.toml
 stow zsh        # symlinks ~/.zshrc
 ```
