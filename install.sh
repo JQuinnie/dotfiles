@@ -16,7 +16,7 @@ echo "Stowing packages..."
 cd ~/dotfiles
 stow kitty
 stow starship
-# stow zsh    # uncomment to symlink .zshrc
+stow zsh
 # stow nvim   # coming soon
 # stow bat    # coming soon
 

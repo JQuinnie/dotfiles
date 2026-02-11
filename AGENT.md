@@ -34,5 +34,5 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/). E
 
 ## Important
 - Never commit API keys or secrets. Use `~/.secrets` or environment-specific files
-- The `zsh/.zshrc` in this repo has API key placeholders - the local `~/.zshrc` may differ
+- The `zsh/.zshrc` in this repo is a sanitized copy - the local `~/.zshrc` may differ
 - Test config changes by reloading the app before committing
