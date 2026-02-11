@@ -4,31 +4,38 @@ Personal configuration files for my development environment.
 
 ## What's Included
 
-- **Kitty** - Terminal emulator config with Gruvbox theme
-- **Neovim/LazyVim** - Editor configuration  
-- **Zsh** - Shell configuration with Starship prompt
-- **Bat** - Cat replacement with syntax highlighting
-- **Starship** - Cross-shell prompt
+- **Kitty** - Terminal emulator config with Gruvbox Dark theme
+- **Zsh** - Shell configuration with Oh My Zsh
+- **Starship** - Cross-shell prompt with Gruvbox palette
+- **Neovim/LazyVim** - Editor configuration (coming soon)
+- **Bat** - Cat replacement with syntax highlighting (coming soon)
 
 ## Installation
 
-### Prerequisites
 ```bash
-brew install kitty neovim bat fzf starship
-```
-
-### Install dotfiles
-```bash
-git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
+git clone https://github.com/JQuinnie/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./install.sh
+```
+
+The install script will:
+1. Install prerequisites via Homebrew (stow, kitty, starship, eza, bat, fzf, neovim)
+2. Use [GNU Stow](https://www.gnu.org/software/stow/) to symlink configs to the correct locations
+
+To stow individual packages manually:
+```bash
+cd ~/dotfiles
+stow kitty      # symlinks ~/.config/kitty
+stow starship   # symlinks ~/.config/starship.toml
+stow zsh        # symlinks ~/.zshrc
 ```
 
 ## Tools Used
 
 - Terminal: Kitty
 - Editor: Neovim with LazyVim
-- Shell: Zsh
-- Prompt: Starship (Gruvbox Rainbow preset)
-- Theme: Gruvbox
+- Shell: Zsh + Oh My Zsh
+- Prompt: Starship (Gruvbox palette)
+- ls replacement: eza
+- Theme: Gruvbox Dark
 - Font: JetBrains Mono Nerd Font
