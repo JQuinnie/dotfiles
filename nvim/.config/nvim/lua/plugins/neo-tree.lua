@@ -15,6 +15,17 @@ return {
           end,
           desc = "Copy absolute path",
         },
+        ["gY"] = {
+          function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+            local relative_path = vim.fn.fnamemodify(path, ":.")
+            vim.fn.setreg("+", relative_path)
+            vim.fn.setreg('"', relative_path)
+            vim.notify("Copied: " .. relative_path)
+          end,
+          desc = "Copy relative path",
+        },
       },
     },
     filesystem = {

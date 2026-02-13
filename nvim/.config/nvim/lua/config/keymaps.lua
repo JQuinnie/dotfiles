@@ -10,3 +10,10 @@ vim.keymap.set({ "n", "v", "o" }, "gh", "^", { desc = "Go to first non-blank cha
 vim.keymap.set({ "n", "v", "o" }, "gl", "$", { desc = "Go to end of line" })
 
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
+
+-- Copy relative path of current file
+vim.keymap.set("n", "<leader>yr", function()
+  local path = vim.fn.expand("%:.")
+  vim.fn.setreg("+", path)
+  vim.notify("Copied relative path: " .. path)
+end, { desc = "Copy relative path" })
