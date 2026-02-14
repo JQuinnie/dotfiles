@@ -1,5 +1,8 @@
 return {
   "folke/snacks.nvim",
+  init = function()
+    vim.g.snacks_scratch_enabled = false
+  end,
   opts = {
     picker = {
       sources = {
@@ -16,6 +19,6 @@ return {
       },
     },
     gitbrowse = { enabled = true },
-    scratch = { enabled = true },
+    scratch = { enabled = false },
   },
 }
