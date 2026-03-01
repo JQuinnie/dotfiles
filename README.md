@@ -5,9 +5,9 @@ Personal configuration files for my development environment.
 ## What's Included
 
 - **Kitty** - Terminal emulator config with Gruvbox Dark theme
-- **Neovim** - LazyVim editor configuration with Gruvbox Material
+- **Neovim** - LazyVim editor configuration with Gruvbox Dark
 - **Starship** - Cross-shell prompt with Gruvbox palette
-- **Zsh** - Shell configuration with Oh My Zsh
+- **Zsh** - Shell configuration with Oh My Zsh, carapace completions, zoxide, and atuin
 
 ## Installation
 
@@ -18,7 +18,7 @@ cd ~/dotfiles
 ```
 
 The install script will:
-1. Install prerequisites via Homebrew (stow, kitty, starship, eza, bat, fzf, neovim)
+1. Install prerequisites via Homebrew (stow, kitty, starship, eza, bat, fzf, neovim, carapace, zoxide, atuin)
 2. Use [GNU Stow](https://www.gnu.org/software/stow/) to symlink configs to the correct locations
 
 To stow individual packages manually:
@@ -36,6 +36,9 @@ stow zsh        # symlinks ~/.zshrc
 - Editor: Neovim with LazyVim
 - Shell: Zsh + Oh My Zsh
 - Prompt: Starship (Gruvbox palette)
+- Shell completions: Carapace
+- Shell history: Atuin
+- cd replacement: Zoxide
 - ls replacement: eza
 - Theme: Gruvbox Dark
 - Font: JetBrains Mono Nerd Font

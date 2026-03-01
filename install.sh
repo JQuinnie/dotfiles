@@ -6,7 +6,7 @@ echo "Installing dotfiles..."
 echo "Installing prerequisites..."
 brew install stow
 brew install --cask kitty
-brew install starship eza bat fzf neovim
+brew install starship eza bat fzf neovim carapace zoxide atuin
 
 # Create config directory if it doesn't exist
 mkdir -p ~/.config
