@@ -11,6 +11,12 @@ vim.keymap.set({ "n", "v", "o" }, "gl", "$", { desc = "Go to end of line" })
 
 vim.keymap.set("n", "Y", "y$", { desc = "Yank to end of line" })
 
+-- Find/replace word under cursor across file
+vim.keymap.set('n', '<leader>rw', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', { desc = "Replace word under cursor" })
+
+-- Re-indent entire file (preserves cursor position)
+vim.keymap.set('n', '<leader>=', 'mzgg=G`z', { desc = "Re-indent entire file" })
+
 -- Copy relative path of current file
 vim.keymap.set("n", "<leader>yr", function()
   local path = vim.fn.expand("%:.")
