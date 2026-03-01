@@ -58,12 +58,19 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+# Carapace completions
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
 # Optional Docker init guard
 [[ -f /Users/jchu/.docker/init-zsh.sh ]] && source /Users/jchu/.docker/init-zsh.sh
 
-# K8s completions
-source <(kubectl completion zsh)
+# Optional iTerm2 integration
+[[ -f ~/.iterm2_shell_integration.zsh ]] && source ~/.iterm2_shell_integration.zsh
 
+# K8s completions (now handled by carapace)
+# source <(kubectl completion zsh)
 
 # ---- lsd aliases (replaced by eza below) ----
 # alias ls='lsd --icon=auto'
@@ -120,6 +127,59 @@ gcob() {
   git checkout $(git branch | fzf -1 -q "$1")
 }
 
+# fzf functions (memorable commands instead of keybindings!)
+# find = fuzzy find file (replaces Ctrl+T)
+find() {
+  local file
+  file=$(fd --type f --hidden --exclude .git | fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' --query="$1") && echo "$file"
+}
+
+# fe = fuzzy edit (find and open in editor)
+fe() {
+  local file
+  file=$(fd --type f --hidden --exclude .git | fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' --query="$1") && $EDITOR "$file"
+}
+
+# fcd = fuzzy cd (replaces Alt+C)
+fcd() {
+  local dir
+  dir=$(fd --type d --hidden --exclude .git | fzf --preview 'eza --tree --color=always {} | head -200' --query="$1") && cd "$dir"
+}
+
+# fkill = fuzzy kill process
+fkill() {
+  local pid
+  pid=$(ps aux | sed 1d | fzf -m --preview 'echo {}' --preview-window down:3:wrap | awk '{print $2}')
+  if [ -n "$pid" ]; then
+    echo "$pid" | xargs kill -${1:-9}
+  fi
+}
+
+# flog = fuzzy git log (browse commits)
+flog() {
+  git log --oneline --color=always --decorate | fzf --ansi --preview 'git show --color=always {1}' --preview-window=right:60% | awk '{print $1}'
+}
+
+# fshow = fuzzy git show (show commit details)
+fshow() {
+  git log --oneline --color=always | fzf --ansi --preview 'git show --color=always {1}' --preview-window=right:60%
+}
+
+# fgco = fuzzy git checkout file (restore file from commit)
+fgco() {
+  local commit
+  commit=$(git log --oneline --color=always | fzf --ansi --preview 'git show --color=always {1}' | awk '{print $1}')
+  if [ -n "$commit" ]; then
+    git checkout "$commit" -- "$1"
+  fi
+}
+
+# fenv = fuzzy environment variables
+fenv() {
+  local var
+  var=$(env | fzf) && echo "$var"
+}
+
 # Node version switcher
 cd() {
   builtin cd "$@"
@@ -131,9 +191,6 @@ cd() {
 }
 cd .
 
-# API keys - source from ~/.secrets or a secrets manager, not here
-# export GEMINI_API_KEY=""
-# export ANTHROPIC_API_KEY=""
 export PATH="/opt/homebrew/bin:$PATH"
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -156,6 +213,12 @@ alias ltree="eza --tree --icons=always"
 
 # bat theme
 export BAT_THEME=gruvbox-dark
+
+# zoxide (smarter cd)
+eval "$(zoxide init zsh)"
+
+# atuin (better shell history)
+eval "$(atuin init zsh)"
 
 # Starship prompt
 eval "$(starship init zsh)"
