@@ -47,10 +47,6 @@ source $ZSH/oh-my-zsh.sh
 # )
 # ---- End Spaceship settings ----
 
-# zsh-autosuggestions + highlighting
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # Completions
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
